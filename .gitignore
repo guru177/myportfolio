@@ -1,0 +1,22 @@
+node_modules/
+dist/
+src/
+public/
+*.local
+.env
+config.local.php
+
+# React / Vite (legacy)
+package-lock.json
+vite.config.ts
+tsconfig.json
+tsconfig.tsbuildinfo
+index.html
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/

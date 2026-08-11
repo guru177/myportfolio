@@ -1,0 +1,22 @@
+RewriteEngine On
+
+# Serve index.php for root
+DirectoryIndex index.php index.html
+
+# Sitemap
+RewriteRule ^sitemap\.xml$ sitemap.php [L]
+
+# Remove trailing slashes
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.+)/$ /$1 [R=301,L]
+
+# Block direct access to includes and config
+RewriteRule ^(includes|config\.php) - [F,L]
+
+# Cache static assets
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 year"
+</IfModule>
