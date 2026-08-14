@@ -18,6 +18,36 @@
 
   let timer = null;
 
+  function pickWebpSrc(slide) {
+    const srcset = slide.dataset.srcset;
+    if (!srcset) return '';
+    const parts = srcset.split(',').map((part) => part.trim());
+    const last = parts[parts.length - 1] || '';
+    const url = last.split(/\s+/)[0] || '';
+    if (url.startsWith('/assets/')) return url;
+    return '';
+  }
+
+  function ensureSlideLoaded(slide) {
+    if (!slide || slide.dataset.loaded === 'true') return;
+
+    const webpSrc = pickWebpSrc(slide);
+    const fallbackSrc = slide.dataset.src || slide.getAttribute('src') || '';
+    const nextSrc = webpSrc || fallbackSrc;
+
+    if (!nextSrc || nextSrc.startsWith('data:')) return;
+
+    slide.src = nextSrc;
+    if (webpSrc && slide.dataset.srcset) {
+      slide.srcset = slide.dataset.srcset;
+    }
+    slide.dataset.loaded = 'true';
+  }
+
+  function preloadAdjacent() {
+    ensureSlideLoaded(slides[(index + 1) % slides.length]);
+  }
+
   function setSlide(nextIndex) {
     index = (nextIndex + slides.length) % slides.length;
 
@@ -28,6 +58,9 @@
     pagerBtns.forEach((btn, i) => {
       btn.classList.toggle('is-active', i === index);
     });
+
+    ensureSlideLoaded(slides[index]);
+    preloadAdjacent();
   }
 
   function stopAuto() {
@@ -72,5 +105,7 @@
     else startAuto();
   });
 
+  ensureSlideLoaded(slides[index]);
+  preloadAdjacent();
   startAuto();
 })();

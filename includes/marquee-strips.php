@@ -9,7 +9,8 @@ function render_marquee_sequence(array $items, int $repeat = 2): void
 {
     for ($r = 0; $r < $repeat; $r++) {
         foreach ($items as $item) {
-            echo '<span class="marquee-strip__item">' . e($item) . '</span>';
+            $phrase = trim((string) $item);
+            echo '<span class="marquee-strip__item marquee-word" data-word="' . e($phrase) . '" tabindex="0">' . e($phrase) . '</span>';
             echo '<span class="marquee-strip__sep" aria-hidden="true">✦</span>';
         }
     }

@@ -22,10 +22,17 @@ $year = (int) date('Y');
 
             <ul class="site-footer__social">
                 <?php foreach ($footer['social'] as $item): ?>
+                    <?php
+                    $href = $item['href'];
+                    if ($href === 'whatsapp') {
+                        $href = whatsapp_url('Hi Guruprasad, I found your portfolio.');
+                    }
+                    $isExternal = str_starts_with($href, 'http');
+                    ?>
                     <li>
                         <a
-                            href="<?= e($item['href']) ?>"
-                            <?= str_starts_with($item['href'], 'http') ? 'target="_blank" rel="noopener noreferrer"' : '' ?>
+                            href="<?= e($href) ?>"
+                            <?= $isExternal ? 'target="_blank" rel="noopener noreferrer me"' : '' ?>
                         ><?= e($item['label']) ?></a>
                     </li>
                 <?php endforeach; ?>

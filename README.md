@@ -30,18 +30,18 @@ Open [http://localhost:8000](http://localhost:8000)
 
 ## SEO
 
-Edit `config.php` for title, description, keywords, and canonical URL. Each page can override `$pageTitle`, `$pageDescription`, and `$canonicalUrl` before including `head.php`.
+Edit `config.php` for title, description, and canonical URL (`site_url`). Each page can override `$pageTitle`, `$pageDescription`, and `$canonicalUrl` before including `head.php`.
 
 Included out of the box:
 
 - Semantic HTML (`main`, `header`, `nav`, `h1`)
-- Meta description & keywords
-- Open Graph & Twitter cards
-- JSON-LD `Person` schema
-- `robots.txt` & dynamic `sitemap.php`
-- Canonical URLs
+- Meta description, Open Graph & Twitter cards
+- JSON-LD (Person, ProfessionalService, WebSite, WebPage, FAQPage, BreadcrumbList)
+- Dynamic `robots.php` & `sitemap.php` (routed via `.htaccess`)
+- `llms.txt` for AI/answer-engine crawlers
+- Canonical URLs & hreflang
 
-Update `site_url` in `config.php` and `robots.txt` before deploying.
+**Before deploying:** update `site_url` in `config.php`, then follow [SEO-DEPLOY.md](SEO-DEPLOY.md).
 
 ## Deploy
 

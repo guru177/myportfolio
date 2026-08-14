@@ -50,16 +50,22 @@ $activeSlide = (int) ($about['active_slide'] ?? 0);
 
                 <div class="about__actions" data-reveal data-reveal-type="up" data-delay="400" data-stagger>
                     <a href="<?= e($about['cta_primary']['href']) ?>" class="about__btn about__btn--fill reveal-child">
-                        <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
-                            <path fill="currentColor" d="M20 6h-3V4a2 2 0 0 0-2-2h-6a2 2 0 0 0-2 2v2H4a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2zM9 4h6v2H9V4z"/>
-                        </svg>
-                        <?= e($about['cta_primary']['label']) ?>
+                        <span class="about__btn-ink" aria-hidden="true"></span>
+                        <span class="about__btn-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" width="16" height="16">
+                                <path fill="currentColor" d="M20 6h-3V4a2 2 0 0 0-2-2h-6a2 2 0 0 0-2 2v2H4a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2zM9 4h6v2H9V4z"/>
+                            </svg>
+                        </span>
+                        <span class="about__btn-label"><?= e($about['cta_primary']['label']) ?></span>
                     </a>
                     <a href="<?= e($about['cta_secondary']['href']) ?>" class="about__btn about__btn--ghost reveal-child">
-                        <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
-                            <path fill="currentColor" d="M8 5v14l11-7L8 5z"/>
-                        </svg>
-                        <?= e($about['cta_secondary']['label']) ?>
+                        <span class="about__btn-ink" aria-hidden="true"></span>
+                        <span class="about__btn-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" width="16" height="16">
+                                <path fill="currentColor" d="M8 5v14l11-7L8 5z"/>
+                            </svg>
+                        </span>
+                        <span class="about__btn-label"><?= e($about['cta_secondary']['label']) ?></span>
                     </a>
                 </div>
             </article>
@@ -79,15 +85,25 @@ $activeSlide = (int) ($about['active_slide'] ?? 0);
         <figure class="about__visual" data-reveal data-reveal-type="right" data-delay="120">
             <div class="about__slider" id="about-slider">
                 <?php foreach ($slides as $i => $slide): ?>
-                    <img
-                        class="about__slide<?= $i === $activeSlide ? ' is-active' : '' ?>"
-                        src="<?= e(local_asset(ltrim($slide['src'], '/'))) ?>"
-                        alt="<?= e($slide['alt']) ?>"
-                        width="900"
-                        height="1100"
-                        loading="<?= $i === $activeSlide ? 'eager' : 'lazy' ?>"
-                        data-index="<?= (int) $i ?>"
-                    >
+                    <?php
+                    $isActive = $i === $activeSlide;
+                    render_responsive_image([
+                        'src' => ltrim($slide['src'], '/'),
+                        'alt' => $slide['alt'],
+                        'class' => 'about__slide' . ($isActive ? ' is-active' : ''),
+                        'widths' => [480, 640, 800],
+                        'sizes' => '(max-width: 768px) 90vw, (max-width: 1200px) 45vw, 560px',
+                        'width' => (int) ($slide['width'] ?? 1024),
+                        'height' => (int) ($slide['height'] ?? 1536),
+                        'loading' => $isActive ? 'eager' : 'lazy',
+                        'fetchpriority' => $isActive ? 'high' : null,
+                        'decoding' => 'async',
+                        'lazy_src' => !$isActive,
+                        'attrs' => [
+                            'data-index' => (string) $i,
+                        ],
+                    ]);
+                    ?>
                 <?php endforeach; ?>
             </div>
 
@@ -108,6 +124,9 @@ $activeSlide = (int) ($about['active_slide'] ?? 0);
                 <button type="button" class="about__nav-btn" id="about-prev" aria-label="Previous slide">←</button>
                 <button type="button" class="about__nav-btn" id="about-next" aria-label="Next slide">→</button>
             </div>
+            <figcaption class="about__visual-caption visually-hidden">
+                <?= e($slides[$activeSlide]['alt'] ?? 'About Guruprasad — web developer in Kochi, Kerala') ?>
+            </figcaption>
         </figure>
     </div>
 </section>

@@ -46,7 +46,7 @@ function wwd_icon(string $name): void
         </div>
 
         <div class="wwd__body">
-            <figure class="wwd__stage tech-frame tech-frame--stage" data-reveal data-reveal-type="left" data-delay="60">
+            <figure class="wwd__stage tech-frame tech-frame--stage" data-reveal data-reveal-type="left" data-delay="60" tabindex="0">
                 <div class="wwd__stage-shell" aria-hidden="true"></div>
                 <span class="wwd__stage-bracket wwd__stage-bracket--tl" aria-hidden="true"></span>
                 <span class="wwd__stage-bracket wwd__stage-bracket--tr" aria-hidden="true"></span>

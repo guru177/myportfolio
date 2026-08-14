@@ -11,7 +11,7 @@ declare(strict_types=1);
             <span class="hero__logo-orb hero__logo-orb--b"></span>
         </span>
         <span class="hero__logo-word">
-            Guru<span class="hero__logo-dot">.</span>
+            Guru<span class="hero__logo-dot" aria-hidden="true"></span>
         </span>
     </a>
 
@@ -22,8 +22,8 @@ declare(strict_types=1);
             <?php endforeach; ?>
         </nav>
 
-        <a class="hero__mail" href="mailto:<?= e($config['email']) ?>">
-            <?= e($config['email']) ?>
+        <a class="hero__mail" href="<?= e(whatsapp_url('Hi Guruprasad, I found your portfolio.')) ?>" target="_blank" rel="noopener noreferrer">
+            WhatsApp
         </a>
     </div>
 </header>

@@ -6,6 +6,8 @@ declare(strict_types=1);
 $contact = $config['contact'];
 $form = $contact['form'];
 $email = $config['email'];
+$waUrl = whatsapp_url('Hi Guruprasad, I need a website quote.');
+$gbpUrl = trim((string) ($config['google_business_url'] ?? ''));
 ?>
 <section class="contact" id="contact" aria-labelledby="contact-heading">
     <div class="contact__inner">
@@ -30,10 +32,33 @@ $email = $config['email'];
 
         <div class="contact__layout">
             <div class="contact__info">
-                <div class="contact__email-block" data-reveal data-reveal-type="up" data-delay="220">
-                    <span class="contact__label"><?= e($contact['email_label']) ?></span>
-                    <a class="contact__email" href="mailto:<?= e($email) ?>"><?= e($email) ?></a>
+                <div class="contact__channels" data-reveal data-reveal-type="up" data-delay="200">
+                    <div class="contact__email-block">
+                        <span class="contact__label"><?= e($contact['email_label']) ?></span>
+                        <a class="contact__email" href="mailto:<?= e($email) ?>"><?= e($email) ?></a>
+                    </div>
+                    <div class="contact__email-block">
+                        <span class="contact__label"><?= e($contact['whatsapp_label'] ?? 'WhatsApp') ?></span>
+                        <a
+                            class="contact__whatsapp"
+                            href="<?= e($waUrl) ?>"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >Chat on WhatsApp</a>
+                    </div>
                 </div>
+
+                <p class="contact__service-area" data-reveal data-reveal-type="up" data-delay="230">
+                    <?= e($contact['service_area_line'] ?? 'Serving Kochi & all of Kerala.') ?>
+                </p>
+
+                <?php if ($gbpUrl !== ''): ?>
+                    <p class="contact__gbp" data-reveal data-reveal-type="up" data-delay="240">
+                        <a href="<?= e($gbpUrl) ?>" target="_blank" rel="noopener noreferrer">
+                            <?= e($contact['gbp_label'] ?? 'Find us on Google') ?>
+                        </a>
+                    </p>
+                <?php endif; ?>
 
                 <ul class="contact__details" data-reveal data-reveal-type="up" data-delay="260" data-stagger>
                     <?php foreach ($contact['details'] as $detail): ?>
@@ -99,6 +124,12 @@ $email = $config['email'];
                             <?= e($form['submit']) ?>
                             <span aria-hidden="true">→</span>
                         </button>
+                        <a
+                            class="contact__wa-btn"
+                            href="<?= e($waUrl) ?>"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >WhatsApp</a>
                         <p class="contact__status" id="contact-status" role="status" aria-live="polite" hidden></p>
                     </div>
                 </form>

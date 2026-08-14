@@ -155,7 +155,31 @@
   font-weight: 700;
   text-decoration: none;
   letter-spacing: -0.01em;
-  transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  transition: box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.about__btn-ink {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.about__btn-icon,
+.about__btn-label {
+  position: relative;
+  z-index: 1;
+  transition:
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    color 0.35s ease;
+}
+
+.about__btn-icon {
+  display: inline-flex;
+  flex-shrink: 0;
 }
 
 .about__btn--fill {
@@ -164,9 +188,33 @@
   border: 1.5px solid #0a0a0a;
 }
 
-.about__btn--fill:hover {
-  background: #222;
-  transform: translateY(-2px);
+.about__btn--fill .about__btn-ink {
+  background: #fff;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.about__btn--fill:hover,
+.about__btn--fill:focus-visible {
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.16);
+}
+
+.about__btn--fill:hover .about__btn-ink,
+.about__btn--fill:focus-visible .about__btn-ink {
+  transform: scaleX(1);
+}
+
+.about__btn--fill:hover .about__btn-icon,
+.about__btn--fill:focus-visible .about__btn-icon {
+  transform: translateY(-3px) rotate(-10deg) scale(1.12);
+  color: #0a0a0a;
+}
+
+.about__btn--fill:hover .about__btn-label,
+.about__btn--fill:focus-visible .about__btn-label {
+  transform: translateX(5px);
+  color: #0a0a0a;
 }
 
 .about__btn--ghost {
@@ -175,9 +223,33 @@
   border: 1.5px solid #0a0a0a;
 }
 
-.about__btn--ghost:hover {
-  background: #f5f5f5;
-  transform: translateY(-2px);
+.about__btn--ghost .about__btn-ink {
+  background: #0a0a0a;
+  transform: scaleY(0);
+  transform-origin: bottom center;
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.about__btn--ghost:hover,
+.about__btn--ghost:focus-visible {
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.1);
+}
+
+.about__btn--ghost:hover .about__btn-ink,
+.about__btn--ghost:focus-visible .about__btn-ink {
+  transform: scaleY(1);
+}
+
+.about__btn--ghost:hover .about__btn-icon,
+.about__btn--ghost:focus-visible .about__btn-icon {
+  transform: translateX(4px) scale(1.15);
+  color: #fff;
+}
+
+.about__btn--ghost:hover .about__btn-label,
+.about__btn--ghost:focus-visible .about__btn-label {
+  transform: translateX(3px);
+  color: #fff;
 }
 
 /* ---------- Info columns ---------- */
@@ -347,8 +419,32 @@
   border-left: 1px solid rgba(255, 255, 255, 0.12);
 }
 
-/* ---------- Responsive ---------- */
-@media (max-width: 1100px) {
+/* ---------- Responsive: 1900 → 420 ---------- */
+@media (max-width: 1600px) {
+  .about__layout {
+    min-height: clamp(560px, 78vh, 840px);
+  }
+
+  .about__visual {
+    min-height: clamp(420px, 66vh, 740px);
+  }
+}
+
+@media (max-width: 1400px) {
+  .about__layout {
+    gap: clamp(16px, 2.5vw, 32px);
+  }
+
+  .about__title-lead {
+    font-size: clamp(2.8rem, 6.5vw, 5.6rem);
+  }
+
+  .about__title-word {
+    font-size: clamp(3.8rem, 10vw, 8.2rem);
+  }
+}
+
+@media (max-width: 1200px) {
   .about__layout {
     grid-template-columns: minmax(64px, 80px) minmax(0, 1fr);
     grid-template-rows: auto auto;
@@ -373,7 +469,18 @@
   }
 }
 
-@media (max-width: 760px) {
+@media (max-width: 984px) {
+  .about__info-cols {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .about__btn {
+    min-width: 150px;
+    padding: 13px 18px;
+  }
+}
+
+@media (max-width: 763px) {
   .about {
     padding: 40px var(--about-gutter, 20px) 48px;
   }
@@ -549,9 +656,19 @@
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 640px) {
   .about {
-    padding: 32px 16px 40px;
+    padding: 36px var(--about-gutter, 16px) 44px;
+  }
+
+  .about__meta {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 420px) {
+  .about {
+    padding: 32px 14px 40px;
   }
 
   .about__layout {
@@ -666,16 +783,6 @@
     width: 48px;
     height: 44px;
   }
-}
-
-@media (max-width: 360px) {
-  .about__title-lead {
-    font-size: 2rem;
-  }
-
-  .about__title-word {
-    font-size: 2.55rem;
-  }
 
   .about__side-brand {
     font-size: 0.98rem;
@@ -686,5 +793,11 @@
   .about__slide {
     transition: opacity 0.3s ease;
     transform: none !important;
+  }
+
+  .about__btn-ink,
+  .about__btn-icon,
+  .about__btn-label {
+    transition: none !important;
   }
 }

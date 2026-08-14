@@ -262,7 +262,24 @@
   animation: robot-float 4.5s ease-in-out infinite 0.8s;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1600px) {
+  .ai-chat-host {
+    bottom: clamp(96px, 13vh, 150px);
+  }
+}
+
+@media (max-width: 1200px) {
+  .ai-chat-host {
+    width: min(340px, calc(100vw - var(--hero-gutter) * 2));
+  }
+
+  .ai-chat-panel {
+    width: min(340px, calc(100vw - var(--hero-gutter) * 2));
+    height: min(420px, 54vh);
+  }
+}
+
+@media (max-width: 984px) {
   .ai-chat-host {
     width: min(320px, calc(100vw - 32px));
     bottom: clamp(88px, 12vh, 130px);
@@ -283,10 +300,24 @@
   }
 }
 
-@media (max-width: 560px) {
+@media (max-width: 763px) {
+  .ai-chat-host {
+    bottom: clamp(80px, 11vh, 120px);
+  }
+
+  .ai-chat-trigger {
+    width: min(104px, 24vw);
+  }
+
+  .ai-chat-panel {
+    height: min(380px, 50vh);
+  }
+}
+
+@media (max-width: 640px) {
   .ai-chat-host {
     right: var(--hero-gutter);
-    width: min(300px, calc(100vw - 24px));
+    width: min(300px, calc(100vw - 28px));
     bottom: clamp(76px, 10vh, 108px);
   }
 
@@ -299,8 +330,22 @@
   }
 
   .ai-chat-panel {
-    right: -8px;
-    width: min(300px, calc(100vw - 24px));
+    right: 0;
+    width: min(300px, calc(100vw - 28px));
+    height: min(360px, 48vh);
+  }
+}
+
+@media (max-width: 420px) {
+  .ai-chat-host {
+    width: min(100%, calc(100vw - 28px));
+    bottom: clamp(68px, 9vh, 96px);
+  }
+
+  .ai-chat-panel {
+    width: min(100%, calc(100vw - 28px));
+    height: min(340px, 46vh);
+    border-radius: 16px;
   }
 }
 

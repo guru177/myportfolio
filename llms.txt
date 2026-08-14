@@ -1,0 +1,46 @@
+# Guru. — Guruprasad, Full Stack Web Developer
+
+> Best web developer in Kerala. Based in Kochi. Builds fast websites, web apps, ecommerce, and custom systems.
+
+## About
+
+- **Name:** Guruprasad
+- **Brand:** Guru.
+- **Role:** Full Stack Web Developer
+- **Location:** Kochi, Kerala, India
+- **Site:** https://guru.dev
+- **Email:** hello@guru.dev
+
+## Services
+
+- Web Development (Laravel, PHP, Node.js)
+- Web Design
+- Ecommerce Development
+- Custom Websites
+- API Development
+- Website Maintenance
+
+## Service areas
+
+Kochi, Ernakulam, Thiruvananthapuram, Kozhikode, Thrissur, Kannur, Kollam, Alappuzha, Kottayam, Palakkad, Malappuram, Kerala, India (remote clients welcome)
+
+## FAQ highlights
+
+- **Cost:** Depends on scope — marketing site, ecommerce, or custom web app. Quote after discovery call.
+- **Timeline:** Marketing sites often ship in a few weeks; custom apps take longer.
+- **Ecommerce:** Yes — catalogs, checkout, payments, admin tools.
+- **Maintenance:** Yes — updates, security, speed, content, small features.
+- **Outside Kerala:** Yes — remote work across India and internationally.
+
+## Key pages
+
+- Home: https://guru.dev/
+- About: https://guru.dev/#about
+- Services: https://guru.dev/#services
+- Portfolio: https://guru.dev/#portfolio
+- FAQ: https://guru.dev/#faq
+- Contact: https://guru.dev/#contact
+
+## Contact
+
+Use the contact form at https://guru.dev/#contact or email hello@guru.dev.

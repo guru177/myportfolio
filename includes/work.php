@@ -8,7 +8,8 @@ $projects = $work['projects'];
 $more = $work['more'];
 $count = str_pad((string) count($projects), 2, '0', STR_PAD_LEFT);
 ?>
-<section class="work" id="projects" aria-labelledby="work-heading">
+<section class="work" id="portfolio" aria-labelledby="work-heading">
+    <span id="projects" hidden></span>
     <div class="work__inner">
         <header class="work__header">
             <div class="work__header-top" data-reveal data-reveal-type="up" data-delay="0">
@@ -34,14 +35,17 @@ $count = str_pad((string) count($projects), 2, '0', STR_PAD_LEFT);
                 <article class="work__item reveal-child">
                     <a class="work__card" href="<?= e($project['href']) ?>">
                         <span class="work__media">
-                            <img
-                                class="work__image"
-                                src="<?= e(local_asset(ltrim($project['image'], '/'))) ?>"
-                                alt="<?= e($project['image_alt']) ?>"
-                                width="640"
-                                height="480"
-                                loading="lazy"
-                            >
+                            <?php render_responsive_image([
+                                'src' => ltrim($project['image'], '/'),
+                                'alt' => $project['image_alt'],
+                                'class' => 'work__image',
+                                'widths' => [480, 640],
+                                'sizes' => '(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw',
+                                'width' => 640,
+                                'height' => 480,
+                                'loading' => 'lazy',
+                                'decoding' => 'async',
+                            ]); ?>
                             <span class="work__code"><?= e($project['code']) ?></span>
                         </span>
 
@@ -66,8 +70,9 @@ $count = str_pad((string) count($projects), 2, '0', STR_PAD_LEFT);
                 <p class="work__more-body"><?= e($more['body']) ?></p>
             </div>
             <a class="work__more-btn" href="<?= e($more['href']) ?>">
-                <?= e($more['button']) ?>
-                <span aria-hidden="true">→</span>
+                <span class="work__more-ink" aria-hidden="true"></span>
+                <span class="work__more-label-btn"><?= e($more['button']) ?></span>
+                <span class="work__more-arrow" aria-hidden="true">→</span>
             </a>
         </div>
     </div>
