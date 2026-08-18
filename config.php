@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 $config = [
     'site_name' => 'Guru.',
-    'site_url' => 'https://guru.dev',
+    'site_url' => 'https://guruprasad.online',
     'locale' => 'en_IN',
     'language' => 'en-IN',
     'author' => 'Guruprasad',

@@ -8,7 +8,7 @@
 - **Brand:** Guru.
 - **Role:** Full Stack Web Developer
 - **Location:** Kochi, Kerala, India
-- **Site:** https://guru.dev
+- **Site:** https://guruprasad.online
 - **Email:** hello@guru.dev
 
 ## Services
@@ -34,13 +34,13 @@ Kochi, Ernakulam, Thiruvananthapuram, Kozhikode, Thrissur, Kannur, Kollam, Alapp
 
 ## Key pages
 
-- Home: https://guru.dev/
-- About: https://guru.dev/#about
-- Services: https://guru.dev/#services
-- Portfolio: https://guru.dev/#portfolio
-- FAQ: https://guru.dev/#faq
-- Contact: https://guru.dev/#contact
+- Home: https://guruprasad.online/
+- About: https://guruprasad.online/#about
+- Services: https://guruprasad.online/#services
+- Portfolio: https://guruprasad.online/#portfolio
+- FAQ: https://guruprasad.online/#faq
+- Contact: https://guruprasad.online/#contact
 
 ## Contact
 
-Use the contact form at https://guru.dev/#contact or email hello@guru.dev.
+Use the contact form at https://guruprasad.online/#contact or email hello@guru.dev.

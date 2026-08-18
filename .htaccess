@@ -3,9 +3,9 @@ RewriteEngine On
 # Serve index.php for root
 DirectoryIndex index.php index.html
 
-# Force HTTPS — uncomment both lines once SSL certificate is active on your host
-# RewriteCond %{HTTPS} !=on
-# RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+# Force HTTPS
+RewriteCond %{HTTPS} !=on
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
 # Prefer non-www (uncomment if needed)
 # RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
