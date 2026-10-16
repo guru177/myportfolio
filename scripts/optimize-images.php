@@ -118,6 +118,12 @@ $jobs = [
     $imagesDir . '/about-slide-02.png' => [480, 640, 800],
     $imagesDir . '/about-slide-03.png' => [480, 640, 800],
     $imagesDir . '/about-slide-04.png' => [480, 640, 800],
+    $imagesDir . '/work/barcode-daddy.jpg' => [480, 640],
+    $imagesDir . '/work/id-daddy.jpg' => [480, 640],
+    $imagesDir . '/work/champions-eduhub.jpg' => [480, 640],
+    $imagesDir . '/work/shaa-davids.png' => [480, 640],
+    $imagesDir . '/work/concepts-design.jpg' => [480, 640],
+    $imagesDir . '/work/raintech-software.jpg' => [480, 640],
 ];
 
 foreach ($jobs as $source => $widths) {

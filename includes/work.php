@@ -32,8 +32,12 @@ $count = str_pad((string) count($projects), 2, '0', STR_PAD_LEFT);
 
         <div class="work__grid" data-reveal data-reveal-type="up" data-delay="80" data-stagger>
             <?php foreach ($projects as $project): ?>
+                <?php
+                $href = (string) $project['href'];
+                $external = str_starts_with($href, 'http://') || str_starts_with($href, 'https://');
+                ?>
                 <article class="work__item reveal-child">
-                    <a class="work__card" href="<?= e($project['href']) ?>">
+                    <a class="work__card" href="<?= e($href) ?>"<?= $external ? ' target="_blank" rel="noopener noreferrer"' : '' ?>>
                         <span class="work__media">
                             <?php render_responsive_image([
                                 'src' => ltrim($project['image'], '/'),
